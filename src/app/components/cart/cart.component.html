@@ -1,1 +1,123 @@
-<p>cart works!</p>
+<div
+  *ngIf="cart.length > 0"
+  [className]="
+    innerWidth < 768
+      ? 'd-flex flex-column justify-content-center align-items-center'
+      : 'd-flex flex-row justify-content-center align-items-center'
+  "
+>
+  <div class="w-50 d-flex flex-column justify-content-center align-items-left">
+    <div
+      *ngFor="let product of cart"
+      [className]="
+        innerWidth < 768
+          ? 'd-flex flex-column justify-content-center'
+          : 'd-flex flex-row justify-content-center'
+      "
+    >
+      <div
+        [className]="
+          innerWidth < 768
+            ? 'w-50 mt-2'
+            : 'd-flex justify-content-center w-25 mt-2 mr-2'
+        "
+      >
+        <img src="{{ product.url }}" style="width: 128px" />
+      </div>
+      <div
+        [className]="
+          innerWidth < 768
+            ? 'd-flex flex-column justify-content-center align-items-center mt-3'
+            : 'd-flex flex-column w-25 justify-content-center'
+        "
+      >
+        <h3>{{ product.name }}</h3>
+        <p>$ {{ product.price }}</p>
+        <div
+          [className]="
+            innerWidth < 768 ? 'd-flex flex-column' : 'd-flex flex-row'
+          "
+        >
+          <label [className]="innerWidth < 768 ? 'text-center' : ''"
+            >Amount</label
+          >
+          <input
+            type="number"
+            min="1"
+            max="100"
+            onKeyDown="return false"
+            [className]="innerWidth < 768 ? 'w-100' : 'w-75 ml-3'"
+            [(ngModel)]="product.quantity"
+            (ngModelChange)="onChange($event, product)"
+          />
+        </div>
+        <button class="btn btn-danger mt-3" (click)="removeProduct(product)">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-50 h-100">
+    <h1 *ngIf="innerWidth >= 768" class="mt-5">Total: $ {{ total }}</h1>
+    <div *ngIf="innerWidth < 768" class="mt-2">
+      <h3 class="text-center">Total</h3>
+      <h3 class="text-center">{{ total }}</h3>
+    </div>
+    <div
+      [className]="
+        innerWidth < 768
+          ? 'd-flex flex-column justify-content-center align-self-center w-100'
+          : 'd-flex flex-column justify-content-center align-self-center w-50'
+      "
+    >
+      <form class="" #form="ngForm" (ngSubmit)="submitform()">
+        <div class="d-flex flex-column">
+          <label>Full name</label>
+          <input
+            type="text"
+            name="fullname"
+            [(ngModel)]="info.fullname"
+            required
+            minlength="8"
+          />
+        </div>
+        <div class="d-flex flex-column">
+          <label>Address</label>
+          <input
+            type="text"
+            name="address"
+            [(ngModel)]="info.address"
+            required
+            minlength="8"
+          />
+        </div>
+        <div class="d-flex flex-column">
+          <label>Credit card number</label>
+          <input
+            name="creditcard"
+            type="password"
+            [(ngModel)]="info.creditcard"
+            required
+            minlength="16"
+          />
+        </div>
+        <button
+          class="btn btn-primary mt-5 w-100"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<h2
+  *ngIf="cart.length <= 0"
+  class="text-center"
+  style="color: #33b5e5"
+  routerLink="/"
+>
+  &larr; No Items in cart, Click here to go back.
+</h2>

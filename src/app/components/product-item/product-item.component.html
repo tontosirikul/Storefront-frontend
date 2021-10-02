@@ -1,7 +1,4 @@
-<div
-  class="d-flex flex-column align-items-center mb-5"
-  routerLink="/product/{{ product.id }}"
->
+<div class="d-flex flex-column align-items-center mb-5">
   <img
     src="{{ product.url }}"
     style="
@@ -11,16 +8,23 @@
       margin: 6px 6px;
       border: 1px solid #33b5e5;
     "
+    routerLink="/product/{{ product.id }}"
   />
   <h3>{{ product.name }}</h3>
   <p>$ {{ product.price }}</p>
-  <form>
-    <select class="custom-select pr-5 mb-3" id="inlineFormCustomSelect">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </form>
-  <button class="btn btn-primary">Add to cart</button>
+  <select
+    class="custom-select pr-5 mb-3 w-75"
+    id="inlineFormCustomSelect"
+    [(ngModel)]="quantity"
+  >
+    <option
+      *ngFor="let value of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      value="{{ value }}"
+    >
+      {{ value }}
+    </option>
+  </select>
+  <button class="btn btn-primary" (click)="addProductToCart(product)">
+    Add to cart
+  </button>
 </div>

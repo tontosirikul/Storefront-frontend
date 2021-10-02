@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,15 @@ import { ProductItemDetailComponent } from './components/product-item-detail/pro
     CartComponent,
     ProductItemComponent,
     ProductItemDetailComponent,
+    ConfirmationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
