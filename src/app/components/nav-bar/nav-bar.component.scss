@@ -3,18 +3,17 @@
   flex-direction: column;
   justify-content: center;
   background: #33b5e5;
-  padding: 20px 200px 20px 200px;
   .heading {
     text-align: center;
     color: #fff;
   }
   .sub-heading {
     text-align: center;
-  }
-  a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none !important;
-    margin: 10px;
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none !important;
+      margin: 10px;
+    }
   }
 }
