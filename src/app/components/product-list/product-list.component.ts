@@ -16,4 +16,7 @@ export class ProductListComponent implements OnInit {
       this.products = res;
     });
   }
+  hideProduct(product: Product): void {
+    this.products = this.products.filter((p) => p.id !== product.id);
+  }
 }

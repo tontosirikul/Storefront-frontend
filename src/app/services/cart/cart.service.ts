@@ -41,9 +41,12 @@ export class CartService {
   }
   removeFromCart(product: Product) {
     this.cart = this.cart.filter((p) => p.id !== product.id);
+    alert(`${product.name} has been removed.`);
   }
   getTotalPrice(): number {
-    return this.cart.reduce((sum, p) => sum + p.quantity * p.price, 0);
+    return parseFloat(
+      this.cart.reduce((sum, p) => sum + p.quantity * p.price, 0).toFixed(2)
+    );
   }
   resetCart(): void {
     this.cart = [];

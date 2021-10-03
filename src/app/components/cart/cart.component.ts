@@ -40,7 +40,6 @@ export class CartComponent implements OnInit {
       creditcard: this.info.creditcard,
       totalspend: this.CartService.getTotalPrice(),
     };
-    console.log('here');
     this.ConfirmationService.addOrderInfo(new_info);
     this.CartService.resetCart();
     this.info.fullname = '';
@@ -51,5 +50,6 @@ export class CartComponent implements OnInit {
   removeProduct(product: Product) {
     this.CartService.removeFromCart(product);
     this.cart = this.CartService.getCart();
+    this.total = this.CartService.getTotalPrice();
   }
 }

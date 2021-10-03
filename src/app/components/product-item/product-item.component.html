@@ -24,7 +24,13 @@
       {{ value }}
     </option>
   </select>
-  <button class="btn btn-primary" (click)="addProductToCart(product)">
+  <button class="btn btn-primary w-50" (click)="addProductToCart(product)">
     Add to cart
+  </button>
+  <button
+    class="btn btn-secondary mt-1 w-50"
+    (click)="hideThisProduct(product)"
+  >
+    I don't interested
   </button>
 </div>
